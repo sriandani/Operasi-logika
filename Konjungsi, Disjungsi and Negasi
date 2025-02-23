@@ -1,0 +1,19 @@
+from tabulate import tabulate
+
+# Membuat list untuk menyimpan data tabel kebenaran
+data = []
+
+# Perulangan untuk menghasilkan semua kemungkinan nilai P dan Q
+for P in [True, False]:
+    for Q in [True, False]:
+        konjungsi = P and Q       # Operasi AND (Konjungsi)
+        disjungsi = P or Q        # Operasi OR (Disjungsi)
+        negasi = (not P) or Q     # Operasi NOT P OR Q (perbaikan dari not -P or Q yang salah)
+        data.append([P, Q, konjungsi, disjungsi, negasi])  # Menyimpan hasil ke dalam list
+
+# Header tabel
+headers = ["P", "Q", "P AND Q (∧)", "P OR Q (∨)", "NOT P OR Q (¬P ∨ Q)"]
+
+# Menampilkan tabel kebenaran
+print("TABEL KEBENARAN KONJUNGSI, DISJUNGSI, DAN NEGASI")
+print(("tabulate(data, headers=headers, tablefmt="fancy_grid"))
